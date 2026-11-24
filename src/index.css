@@ -1,0 +1,103 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg-obsidian: #050508;
+  --bg-surface: #0a0a0f;
+  --bg-elevated: #11121b;
+  --neon-cyan: #00f5ff;
+  --neon-magenta: #ff00aa;
+  --neon-lime: #b4ff39;
+  --neon-violet: #7b2cbf;
+}
+
+@layer base {
+  html {
+    background-color: var(--bg-obsidian);
+    color: #f1f5f9;
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, .font-display-mono {
+    font-family: 'Space Mono', 'JetBrains Mono', monospace;
+  }
+
+  .font-tech-mono {
+    font-family: 'JetBrains Mono', 'Space Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Subtle architectural grid and radial aura */
+.bg-alchemy-grid {
+  background-color: #050508;
+  background-image:
+    radial-gradient(circle at 20% 18%, rgba(0, 245, 255, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 82% 72%, rgba(255, 0, 170, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(123, 44, 191, 0.05) 0%, transparent 60%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 56px 56px, 56px 56px;
+}
+
+/* Subtle film grain overlay */
+.alchemy-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* Crosshair cursor for 3D inspection canvases */
+.cursor-crosshair-tech {
+  cursor: crosshair;
+}
+
+/* Subtle neon glitch micro-effect on hero accent */
+.glitch-title {
+  position: relative;
+}
+
+@keyframes glitch-shift {
+  0%, 92%, 100% {
+    transform: translate(0, 0);
+    text-shadow: 0 0 0 transparent;
+  }
+  93% {
+    transform: translate(-1.5px, 0.5px);
+    text-shadow: 2px 0 rgba(0, 245, 255, 0.65), -2px 0 rgba(255, 0, 170, 0.65);
+  }
+  95% {
+    transform: translate(1.5px, -0.5px);
+    text-shadow: -2px 0 rgba(0, 245, 255, 0.55), 2px 0 rgba(180, 255, 57, 0.45);
+  }
+  97% {
+    transform: translate(0, 0);
+    text-shadow: 0 0 16px rgba(0, 245, 255, 0.25);
+  }
+}
+
+.glitch-animate {
+  animation: glitch-shift 6s infinite steps(1, end);
+}
+
+/* Subtle neon halo ring for floating WhatsApp CTA */
+@keyframes whatsapp-halo {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 245, 255, 0.45), 0 0 22px rgba(180, 255, 57, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(0, 245, 255, 0), 0 0 28px rgba(0, 245, 255, 0.4);
+  }
+}
+
+.whatsapp-neon-halo {
+  animation: whatsapp-halo 2.8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glitch-animate,
+  .whatsapp-neon-halo {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

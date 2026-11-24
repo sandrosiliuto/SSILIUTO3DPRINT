@@ -1,0 +1,8 @@
+{
+  "name": "SSILIUTOIMPRESION3D",
+  "description": "Estudio de arte digital y escultura 3D personalizada. Restauramos fotos antiguas, modelamos en 3D a medida e imprimimos bustos y figuras únicas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
